@@ -1,7 +1,7 @@
 import { ValidaCpfService } from '../Servicos/valida-cpf.service';
 import { ConsultaCepService } from '../Servicos/consulta-cep.service';
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MascarasService } from '../Servicos/mascaras.service';
@@ -38,9 +38,8 @@ export class CadastroClienteComponent {
       cidade: ['',[Validators.required]],
       estado: ['',[Validators.required]],
       complemento: [''],
-      pessoaContato: ['',[Validators.required]],
-      email: ['', [Validators.required]],
-
+      pessoasContato: this.fb.array([this.criarPessoaContato()]),
+      email: this.fb.array([this.criarEmailContato()])
     });
 
     constructor(private fb: FormBuilder, public mascaras: MascarasService,
@@ -49,11 +48,9 @@ export class CadastroClienteComponent {
     ) { }
 
     ngOnInit(): void {
-
     }
 
     onTipoChange(tipo: string) {
-
     }
 
     buscarDadosCep() {
@@ -146,7 +143,6 @@ export class CadastroClienteComponent {
                 duration: 3000,
               });
             }
-
           },
           error => {
             this.snackBar.open('CNPJ Inválido', 'Fechar', {
@@ -167,8 +163,55 @@ export class CadastroClienteComponent {
 
     }
 
+    criarPessoaContato(): FormGroup {
+      return this.fb.group({
+        pessoaContato:['', Validators.required]
+      });
+    }
 
-   }
+    get pessoasContato(): FormArray {
+      return this.form.get('pessoasContato') as FormArray;
+    }
+
+    adicionarPessoaContato(): void {
+      this.pessoasContato.push(this.criarPessoaContato());
+    }
+
+    removerPessoaContato(index: number): void {
+      if (this.pessoasContato.length > 1) {
+        this.pessoasContato.removeAt(index);
+      } else {
+        this.snackBar.open('Dexe existir pelo menos um Campo Pessoa de Contato', 'Fechar', {
+          duration: 3000,
+        });
+      }
+    }
+
+    criarEmailContato(): FormGroup {
+      return this.fb.group({
+        email: ['', [Validators.required, Validators.email]]
+      });
+    }
+
+    get emails(): FormArray {
+      return this.form.get('email') as FormArray;
+    }
+
+    AdicionarEmailContato(): void {
+      this.emails.push(this.criarEmailContato());
+    }
+
+    removerEmailContato(index: number): void {
+      if (this.emails.length > 1) {
+        this.emails.removeAt(index);
+      } else {
+        this.snackBar.open('Dexe existir pelo menos um Campo de e-mail', 'Fechar', {
+          duration: 3000,
+        });
+      }
+    }
+
+  }
 
 
 

@@ -1,13 +1,31 @@
-mat-form-field {
-  width: 50%;
-  display: inline-block;
-  margin: 10px;
-
+/* Define a largura dos campos de formulário para garantir que sejam uniformes */
+.form-group {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 10px;
+  margin-left: 10%;
 }
+
+.form-field {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.add-button {
+  margin-left: 10px;
+}
+
+
+mat-form-field {
+  width: 80%;
+}
+
 
 .card-principal {
   text-align: center;
 }
+
 input.touched {
   border-color: red;
 }
@@ -15,9 +33,8 @@ input.touched {
 .botoes {
   display: flex;
   justify-content: center;
-
 }
 
 .radio-group {
-  display: block; /* Faz o grupo de botões de rádio ocupar uma linha inteira por si só */
+  display: block;
 }
