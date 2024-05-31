@@ -60,14 +60,11 @@
         <input matInput formControlName="cpf" [mask]="mascaras.cpf" (blur)="validaCpf()">
       </mat-form-field>
 
-
-
-
       <div class="form-container">
         <div formArrayName="email">
           <div *ngFor="let email of emails.controls; let i = index" [formGroupName]="i" class="form-group">
             <mat-form-field class="form-field">
-              <mat-label>Email <span *ngIf="form.get('email')?.invalid">*</span></mat-label>
+              <mat-label>E-mail <span *ngIf="form.get('email')?.invalid">*</span></mat-label>
               <input matInput formControlName="Email">
             </mat-form-field>
             <button mat-icon-button color="primary" (click)="AdicionarEmailContato()" class="add-button">
@@ -79,7 +76,6 @@
           </div>
         </div>
       </div>
-
 
       <mat-form-field>
         <mat-label>Telefone Fixo</mat-label>
