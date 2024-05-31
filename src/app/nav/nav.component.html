@@ -1,0 +1,58 @@
+<div>
+  <mat-toolbar color="primary" class="example-toolbar toolbar">
+    <div>
+      <button mat-button routerLink="/">
+        <i class="material-icons"> home </i>Home
+      </button>
+      <button mat-button routerLink="/">
+        <i class="material-icons"> dashboard </i>Dashboard
+      </button>
+      <button mat-button [matMenuTriggerFor]="menuClientes">
+        <i class="material-icons">people</i>Clientes
+      </button>
+      <mat-menu #menuClientes="matMenu">
+        <button mat-menu-item class="menu-button" class="menu-item" routerLink="/cadastro-cliente">
+          <i class="material-icons"> person_add</i>Cadastrar
+        </button>
+        <button mat-menu-item class="menu-button" routerLink="/subcategoria2">
+          <i class="material-icons"> person_search</i>Consultar
+        </button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menuProdutos">
+        <i class="material-icons">handyman</i>Produtos / Peças
+      </button>
+      <mat-menu #menuProdutos="matMenu">
+        <button mat-menu-item class="menu-button" class="menu-item" routerLink="">
+          <i class="material-icons">add</i>Cadastrar
+        </button>
+        <button mat-menu-item class="menu-button" routerLink="/subcategoria2">
+          <i class="material-icons"> search</i>Consultar
+        </button>
+      </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menuOS">
+          <i class="material-icons">business_center</i>Ordem de Serviço
+        </button>
+        <mat-menu #menuOS="matMenu">
+          <button mat-menu-item class="menu-button" class="menu-item" routerLink="/subcategoria1">
+            <i class="material-icons">add</i>Cadastrar
+          </button>
+          <button mat-menu-item class="menu-button" routerLink="/subcategoria2">
+            <i class="material-icons"> search</i>Consultar
+        </button>
+      </mat-menu>
+    </div>
+    <div>
+      <button mat-button routerLink="/category">
+        <i class="material-icons">settings</i>Configuração
+      </button>
+      <button mat-button routerLink="/logout">
+        <i class="material-icons">logout</i>Logout
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav-content class="sidenav-container">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

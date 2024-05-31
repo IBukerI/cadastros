@@ -1,0 +1,11 @@
+.menu-button {
+  color: #483285;
+  font-size: 16px;
+  /* Adicione mais propriedades conforme necessário */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+

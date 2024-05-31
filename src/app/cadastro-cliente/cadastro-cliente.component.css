@@ -1,0 +1,23 @@
+mat-form-field {
+  width: 50%;
+  display: inline-block;
+  margin: 10px;
+
+}
+
+.card-principal {
+  text-align: center;
+}
+input.touched {
+  border-color: red;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+
+}
+
+.radio-group {
+  display: block; /* Faz o grupo de botões de rádio ocupar uma linha inteira por si só */
+}

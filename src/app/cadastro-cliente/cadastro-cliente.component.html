@@ -1,0 +1,111 @@
+
+<mat-card class="card-principal">
+  <mat-card-title>Cadastro Cliente</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-radio-group formControlName="tipo" class="radio-group">
+        <mat-radio-button value="fisica" >Pessoa Fisica</mat-radio-button>
+        <mat-radio-button value="juridica">Pessoa Juridica</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'juridica'">
+        <mat-label>CNPJ</mat-label>
+        <input matInput formControlName="cnpj" [mask]="mascaras.cnpj" (blur)="buscarDadosCNPJ()" [class.touched]="form.get('cnpj')?.touched">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'fisica'">
+        <mat-label>Nome</mat-label >
+        <input matInput formControlName="nome">
+      </mat-form-field>
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'juridica'">
+        <mat-label>Razão Social</mat-label >
+        <input matInput formControlName="razaoSocial" readonly>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'juridica'">
+        <mat-label>Nome Fantasia</mat-label >
+        <input matInput formControlName="nomeFantasia">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'juridica'">
+        <mat-label>Pessoa de Contato</mat-label >
+        <input matInput formControlName="pessoaContato">
+      </mat-form-field>
+
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'fisica'">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput formControlName="sobrenome">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'fisica'">
+        <mat-label>Data de Nascimento</mat-label >
+        <input matInput type="text" formControlName="dataNascimento" [mask]="mascaras.data">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="form.get('tipo')?.value === 'fisica'">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" [mask]="mascaras.cpf" (blur)="validaCpf()">
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefone Fixo</mat-label>
+        <input matInput formControlName="telefoneFixo" [mask]="mascaras.telefone">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefone Celular</mat-label>
+        <input matInput formControlName="telefoneCelular" [mask]="mascaras.celular">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>CEP</mat-label>
+        <input matInput formControlName="cep" [mask]="mascaras.cep" (blur)="buscarDadosCep()">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Logradouro</mat-label>
+        <input matInput formControlName="logradouro">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Número</mat-label>
+        <input matInput formControlName="numero">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bairro</mat-label>
+        <input matInput formControlName="bairro"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="cidade"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Complemento</mat-label>
+        <input matInput formControlName="complemento"/>
+      </mat-form-field>
+
+
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="botoes">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Cadastrar</button>
+  </mat-card-actions>
+
+</mat-card>
